@@ -1,10 +1,9 @@
-import './App.css';
-import Flights from './components/Flights'
-import Planes from './components/Planes'
-import FlightSearch from './components/FlightSearch'
+import '../App.css';
+import FlightsSearch from './FlightsSearch'
+import Planes from './Planes'
+import FlightResults from './FlightResults'
 
-
-import Home from './components/Home'
+import Home from './Home'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <Router>
 
       <h2>BURNING AIRLINES</h2>
-
 
       <nav>
 
@@ -24,8 +22,8 @@ function App() {
       <h3>GA Airlines</h3>
 
       <Route exact path = '/' component={ Home } />
-      <Route exact path = '/flights' component={ Flights } />
-      <Route exact path = '/flights/:id' component={FlightSearch} />
+      <Route exact path = '/flights' component={ FlightsSearch } />
+      <Route exact path = '/flights/:id' component={FlightResults} />
       <Route exact path = '/planes' component={ Planes } />
       {/* <Route exact path = '/planes/:id' component={ Planes } /> */}
       </nav>

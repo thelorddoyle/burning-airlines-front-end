@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FlightSearch extends Component {
+class FlightResults extends Component {
 
     state = {
         flightInfo: [], // from backend. 
@@ -59,4 +59,4 @@ class FlightSearch extends Component {
     }
 }
 
-export default FlightSearch;
+export default FlightResults;

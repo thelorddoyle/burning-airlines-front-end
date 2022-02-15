@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Flights extends React.Component {
+class FlightsSearch extends React.Component {
 
     state = {
         flightSelect: '', // this should be an array which we're pushing flight info into. 
@@ -11,7 +11,7 @@ class Flights extends React.Component {
     }
 
     handleSelection = (ev) => {
-        this.props.history.push(`/flights/${(this.state.flightSelect)}`) // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id
+        this.props.history.push(`/flights/${(this.state.flightSelect)}`) // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
     }
 
     render() {
@@ -33,4 +33,4 @@ class Flights extends React.Component {
     }
 }
 
-export default Flights;
+export default FlightsSearch;
