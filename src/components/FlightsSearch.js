@@ -11,7 +11,7 @@ class Flights extends React.Component {
     }
 
     handleSelection = (ev) => {
-        this.props.history.push(`/flights/${(this.state.flightSelect)}`) // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id
+        this.props.history.push(`/flights/${(this.state.flightSelect)}`) // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
     }
 
     render() {
