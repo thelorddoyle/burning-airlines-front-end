@@ -10,12 +10,25 @@ class FlightSearch extends Component {
 
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
-        // this.showFlightInfo(this.props.match.params.id)
+        // this.showFlightInfo(this.props.match.params.id) 
     }
 
     showFlightInfo(flightNo){
         this.setState({ loading: true }); 
         // this will pull from backend and push into this.state.flightInfo array
+
+        // try {
+        //     const res = await axios.get( backend );
+        //     console.log('response', res.data);
+        //     this.setState({
+        //       flightInfo: res.data. ,
+        //       loading: false  
+        //     });
+        //   } catch( err ){
+        //      console.log('Error in search AJAX: ', err);
+        //      this.setState({ error: err, loading: false });
+        //   }
+
     }
 
 
