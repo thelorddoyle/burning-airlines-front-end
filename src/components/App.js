@@ -1,6 +1,5 @@
 import '../App.css';
 import FlightSearch from './FlightSearch'
-import Planes from './Planes'
 import FlightResults from './FlightResults'
 
 import Home from './Home'
@@ -15,17 +14,14 @@ function App() {
 
       <nav>
 
-      <Link to="/">Home</Link> |&nbsp;
-      <Link to="/flights">Flights</Link> |&nbsp;
-      <Link to="/planes">Planes</Link>
+      <Link to="/">My Account</Link> |&nbsp;
+      <Link to="/flights">Flight Search</Link>
 
       <h3>GA Airlines</h3>
 
       <Route exact path = '/' component={ Home } />
       <Route exact path = '/flights' component={ FlightSearch } />
       <Route exact path = '/flights/:id' component={FlightResults} />
-      <Route exact path = '/planes' component={ Planes } />
-      {/* <Route exact path = '/planes/:id' component={ Planes } /> */}
       </nav>
       </Router>
       
