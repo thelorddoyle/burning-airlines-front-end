@@ -1,5 +1,6 @@
 import '../App.css';
-import FlightSearch from './FlightSearch'
+import FlightsSearch from './FlightsSearch'
+import Planes from './Planes'
 import FlightResults from './FlightResults'
 
 import Home from './Home'
@@ -20,7 +21,7 @@ function App() {
       <h3>GA Airlines</h3>
 
       <Route exact path = '/' component={ Home } />
-      <Route exact path = '/flights' component={ FlightSearch } />
+      <Route exact path = '/flights' component={ FlightsSearch } />
       <Route exact path = '/flights/:id' component={FlightResults} />
       </nav>
       </Router>
