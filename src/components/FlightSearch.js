@@ -3,19 +3,19 @@ import React, { Component } from 'react';
 class FlightSearch extends Component {
 
     state = {
-        flightInfo: [], // from backend
+        flightInfo: [], // from backend. 
         loading: false,  
         error: null 
     }
 
     componentDidMount(){ 
-        // this will call showFlightInfo()
-        console.log(this.props.match.params.id)
+        // this will call showFlightInfo() with: 
+        // this.showFlightInfo(this.props.match.params.id)
     }
 
-    showFlightInfo(){
-        this.setState({ loading: true });
-        // this will pull from backend and push into flightInfo
+    showFlightInfo(flightNo){
+        this.setState({ loading: true }); 
+        // this will pull from backend and push into this.state.flightInfo array
     }
 
 
@@ -25,15 +25,22 @@ class FlightSearch extends Component {
           }
         return (
             <div>
-                <p>showing results for your flight ({this.props.match.params.id})</p>
-                <p>from: </p>
-                <p>to: </p>
-                <p>plane: </p>
-                <p>depart: </p>
-                <p>seat select: </p>
+                {
+                this.state.loading
+                ?
+                <p>Loading results...</p>
+                :
+                <div className="bookFlight">
+                <p>showing results for selected flight ({this.props.match.params.id})</p>
+                <p>from: something like this.flightInfo.origin </p>
+                <p>to: something like this.flightInfo.destination</p>
+                <p>plane: something like this.flightInfo.plane.name, (this.flightInfo.plane.id)?</p>
+                <p>depart time/date: ?</p>
+                <p>seat select: this will set params for our reservation which will be passed back to the backend</p>
                 <p>on submit, prompt('something about confirming selection'): </p>
-
-
+                <p>Redirect home?</p>
+                </div>
+                }
             </div>
         );
     }
