@@ -6,7 +6,9 @@ class NavBar extends React.Component{
 
   render(){
     return(
-      
+      <div>
+        
+      </div>
     );//return
   }//render
 
@@ -15,3 +17,5 @@ class NavBar extends React.Component{
 
 
 }//class NavBar
+
+export default Navbar
