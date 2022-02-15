@@ -44,14 +44,14 @@ class FlightSearch extends Component {
                 <p>Loading results...</p>
                 :
                 <div className="bookFlight">
-                <p>showing results for selected flight ({this.props.match.params.id})</p>
-                <p>from: something like this.flightInfo.origin </p>
-                <p>to: something like this.flightInfo.destination</p>
-                <p>plane: something like this.flightInfo.plane.name, (this.flightInfo.plane.id)?</p>
-                <p>depart time/date: ?</p>
-                <p>seat select: this will set params for our reservation which will be passed back to the backend</p>
-                <p>on submit, prompt('something about confirming selection'): </p>
-                <p>Redirect home?</p>
+                    <p>showing results for selected flight ({this.props.match.params.id})</p>
+                    <p>from: something like this.flightInfo.origin </p>
+                    <p>to: something like this.flightInfo.destination</p>
+                    <p>plane: something like this.flightInfo.plane.name, (this.flightInfo.plane.id)?</p>
+                    <p>depart time/date: ?</p>
+                    <p>seat select: this will set params for our reservation which will be passed back to the backend</p>
+                    <p>on submit, prompt('something about confirming selection'): </p>
+                    <p>Redirect home?</p>
                 </div>
                 }
             </div>
