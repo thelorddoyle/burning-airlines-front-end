@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Flights extends React.Component {
+class FlightsSearch extends React.Component {
 
     state = {
         flightSelect: '', // this should be an array which we're pushing flight info into. 
@@ -33,4 +33,4 @@ class Flights extends React.Component {
     }
 }
 
-export default Flights;
+export default FlightsSearch;
