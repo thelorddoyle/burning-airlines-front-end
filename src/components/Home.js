@@ -5,6 +5,12 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>HOME PAGE</h1>
+
+                <p>Recent flights?</p>
+                <p>Next flights?</p>
+                <p>User bookings?</p>
+
+
             </div>
         );
     }

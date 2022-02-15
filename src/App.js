@@ -1,6 +1,7 @@
 import './App.css';
 import Flights from './components/Flights'
 import Planes from './components/Planes'
+import FlightSearch from './components/FlightSearch'
 
 
 import Home from './components/Home'
@@ -24,7 +25,7 @@ function App() {
 
       <Route exact path = '/' component={ Home } />
       <Route exact path = '/flights' component={ Flights } />
-      <Route exact path = '/flights/:id' components={Flights} />
+      <Route exact path = '/flights/:id' component={FlightSearch} />
       <Route exact path = '/planes' component={ Planes } />
       {/* <Route exact path = '/planes/:id' component={ Planes } /> */}
       </nav>

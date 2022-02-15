@@ -19,6 +19,7 @@ class Planes extends React.Component {
                 <h1>Planes</h1>
                 <div className="planes">
                     <p>Info about planes goes here</p>
+                    imagine this is a plane select area:
                     <form onSubmit={ this.handleSelection }>
                     <input type="text" onChange={ this.handleInput } />
                     </form>
