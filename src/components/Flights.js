@@ -4,7 +4,10 @@ class Flights extends React.Component {
     render() {
         return (
             <div>
-                Flights
+                <h1>Flights</h1>
+                <div className="flights">
+                    <p>Info about flights goes here</p>
+                </div>
             </div>
         );
     }
