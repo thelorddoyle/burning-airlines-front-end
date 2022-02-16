@@ -72,9 +72,11 @@ class PageToBookFlight extends Component {
         return (
             <div>
                 THIS IS THE FLIGHTS PAGE {this.props.match.params.id}
+                {}
             </div>
         );
     }
 }
 
 export default PageToBookFlight;
+
