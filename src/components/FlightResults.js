@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import axios from 'axios'
+
 class FlightResults extends Component {
 
     state = {
@@ -11,6 +13,18 @@ class FlightResults extends Component {
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id) 
+
+        try {
+            axios.get( 'http://localhost:3000/flights');
+            console.log('response', res.data);
+            this.setState({
+              flightInfo: res.data. ,
+              loading: false  
+            });
+          } catch( err ){
+             console.log('Error in search AJAX: ', err);
+             this.setState({ error: err, loading: false });
+          }
     }
 
     showFlightInfo(flightNo){
