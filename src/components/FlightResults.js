@@ -4,11 +4,9 @@ import FlightsSearch from './FlightsSearch'
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
 import axios from 'axios'
 
 const RAILS_FLIGHTS_BASE_URL ='http://localhost:3000/flights'
-
 
 class FlightResults extends Component {
 
@@ -61,7 +59,7 @@ class FlightResults extends Component {
         origin: {f.origin} <br />
         seats: {f.seats} <br />
             <form onSubmit={ () => {
-                this.props.sendData(this.state.selectedFlight)
+                this.goToFlight(f)
             } } >
         <Button type="submit">View Flight</Button>
             </form>

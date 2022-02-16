@@ -14,9 +14,10 @@ class PageToBookFlight extends Component {
         plane: [],
         loading: false,  
         error: null,
+        seatPlan: []
     }
 
-    componentDidMount(){ 
+    componentDidMount() { 
         // this.showFlightInfo()
         console.log('mounted')
         this.getReservationInfo(this.props.match.params.id)
@@ -47,31 +48,42 @@ class PageToBookFlight extends Component {
     }
 
     renderSeats = () => {
-        let counter = 1
+
+        let seatPlanArray = [];
+
         const { rows, columns, reservation } = this.state;
         console.log(reservation)
         for (let i = 1; i < rows+1; i ++){
-            // console.log('row', i)
+            // seatPlanArray.push(<div className='row' key={i}></div>);
+            // console.log(seatPlanArray)
             for (let j = 1; j < columns+1; j++){
-                reservation.forEach( (r) => {
-                    // console.log(r.column)
-                    if (r.column === j && r.row === i){
-                        console.log('seat taken at column', j, 'and row', i)
-                    } else{
-                        console.log('column', j, 'row', i)
-                    }
-                })
-                
+
+                // reservation.forEach( (r) => {
+
+                    // if (r.column === j && r.row === i){
+                //         seatPlanArray.push(<div status='occupied' row={i} column={j}></div>);
+                //         // console.log(seatPlanArray)
+                //     } else {
+                        seatPlanArray.push(<div status='unoccupied' row={i} column={j}></div>);
+                //         // console.log('column', j, 'row', i)
+                //     }
+
+                // })
             }
-            counter+=1
-            // console.log(counter)
         }
+
+        this.setState({seatPlan: seatPlanArray})
+
     }
 
+    
+
     render() {
+
         return (
             <div>
                 THIS IS THE FLIGHTS PAGE {this.props.match.params.id}
+                {this.state.seatPlan}
             </div>
         );
     }
