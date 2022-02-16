@@ -21,6 +21,8 @@ class FlightResults extends Component {
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id)
+        console.log(this.props)
+        
         this.showFlightInfo()
         
     }

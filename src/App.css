@@ -45,8 +45,13 @@
 
 .grid {
   display: grid;
+  width:200px;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0px;
 }
 
 .planeButton {
