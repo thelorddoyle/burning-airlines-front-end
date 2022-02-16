@@ -47,6 +47,8 @@ class PageToBookFlight extends Component {
              this.setState({ error: err, loading: false });
           }
         this.renderSeats()
+        console.log('flight', this.state.flight)
+        console.log('plane', this.state.plane)
     }
 
     renderSeats = () => {
@@ -66,6 +68,7 @@ class PageToBookFlight extends Component {
 
         this.setState({seatPlan: seatPlanArray})
         this.renderSeatGrid()
+        console.log(this.state.plane)
 
     }
 
@@ -82,20 +85,24 @@ class PageToBookFlight extends Component {
 
         if (columns === 2) {
             seatPlanGrid.push(
-                <div className='grid2' key={flight.id} >
-                    {this.state.seatPlan}
+                <div className='seatplan grid2' key={flight.id} >
+                    {this.state.seatPlan} 
+                    <div className="wing2-left"></div><div className="wing2-right"></div>
                 </div>
             )
         } else if (columns === 4) {
             seatPlanGrid.push(
-                <div className='grid4' key={flight.id} >
+                <div className='seatplan grid4' key={flight.id} >
                     {this.state.seatPlan}
+                    <div className="wing4-left"></div><div className="wing4-right"></div>
+
                 </div> 
             )
         } else if (columns === 6) {
             seatPlanGrid.push(
-                <div className='grid6' key={flight.id} >
+                <div className='seatplan grid6' key={flight.id} >
                     {this.state.seatPlan}
+                    <div className="wing6-left"></div><div className="wing6-right"></div>
                 </div>
             )
         }
