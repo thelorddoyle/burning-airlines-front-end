@@ -26,6 +26,9 @@ class FlightsSearch extends React.Component {
         this.props.history.push(`/flights/${(ev.id)}`) 
         // ev here is the ID sent from getData handleSelection call
         
+        // TODO: Search in the DB where origin only shows
+        // Flight.all.where origin: 'Perth'
+
         // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
     }
 

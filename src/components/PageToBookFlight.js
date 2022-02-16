@@ -14,7 +14,8 @@ class PageToBookFlight extends Component {
         plane: [],
         loading: false,  
         error: null,
-        seatPlan: []
+        seatPlan: [],
+        seatPlanGrid: []
     }
 
     componentDidMount() { 
@@ -37,10 +38,10 @@ class PageToBookFlight extends Component {
               columns: res.data.plane.columns,
               loading: false  
             });
-            console.log('checking flight:', this.state.flight);
-            console.log('checking reservation:', this.state.reservation);
-            console.log('checking rows:', this.state.rows);
-            console.log('checking columns:', this.state.columns);
+            // console.log('checking flight:', this.state.flight);
+            // console.log('checking reservation:', this.state.reservation);
+            // console.log('checking rows:', this.state.rows);
+            // console.log('checking columns:', this.state.columns);
           } catch( err ){
              console.log('Error in search AJAX: ', err);
              this.setState({ error: err, loading: false });
@@ -58,12 +59,49 @@ class PageToBookFlight extends Component {
             // console.log(seatPlanArray)
             for (let j = 1; j < columns+1; j++){
 
-                seatPlanArray.push(<Seat row={i} column={j} plane={this.state.plane} flight={this.state.flight} reservation={this.state.reservation} />);
+                seatPlanArray.push(<Seat key={`seat ${i-1}${j}`} row={i} column={j} plane={this.state.plane} flight={this.state.flight} reservation={this.state.reservation} />);
 
             }
         }
 
         this.setState({seatPlan: seatPlanArray})
+        this.renderSeatGrid()
+
+    }
+
+    renderSeatGrid = () => {
+
+        let seatPlanGrid = [];
+
+        const { columns, flight, plane } = this.state
+        console.log('rendering seat grid for: flight #', flight.id)
+        console.log('this flight is on the plane: ', this.state.plane.name)
+        // console.log('this plane has this many seats: ', this.flight.seats)
+        console.log('this flight should have rows:', this.state.rows);
+        console.log('this flight should have columns:', this.state.columns);
+
+        if (columns === 2) {
+            seatPlanGrid.push(
+                <div className='grid2' key={flight.id} >
+                    {this.state.seatPlan}
+                </div>
+            )
+        } else if (columns === 4) {
+            seatPlanGrid.push(
+                <div className='grid4' key={flight.id} >
+                    {this.state.seatPlan}
+                </div> 
+            )
+        } else if (columns === 6) {
+            seatPlanGrid.push(
+                <div className='grid6' key={flight.id} >
+                    {this.state.seatPlan}
+                </div>
+            )
+        }
+
+        this.setState({seatPlanGrid: seatPlanGrid})
+        console.log(this.state.seatPlanGrid)
 
     }
 
@@ -72,9 +110,7 @@ class PageToBookFlight extends Component {
         return (
             <div>
                 THIS IS THE FLIGHTS PAGE {this.props.match.params.id}
-                <div className='grid'>
-                    {this.state.seatPlan}
-                </div>
+                {this.state.seatPlanGrid}
             </div>
         );
     }
