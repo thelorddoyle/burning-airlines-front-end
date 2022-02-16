@@ -43,7 +43,18 @@
   border: 1px white solid;
 }
 
-.grid {
+.grid2 {
+  display: grid;
+  width:200px;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+}
+
+.grid4 {
   display: grid;
   width:200px;
   position:relative;
@@ -51,6 +62,17 @@
   transform:translateX(-50%);
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0px;
+}
+
+.grid6 {
+  display: grid;
+  width:200px;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 0px;
 }
 

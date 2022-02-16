@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import FlightsSearch from './FlightsSearch'
 import FlightResults from './FlightResults'
 import PageToBookFlight from './PageToBookFlight';
+import FlightPathQuery from './FlightPathQuery'
 
 class NavBar extends React.Component{
 
@@ -21,6 +22,7 @@ class NavBar extends React.Component{
 
         <Route exact path = '/flights' component={ FlightsSearch } />
         <Route exact path = '/flights/:id' component={PageToBookFlight} />
+        <Route exact path = '/flights/search/path' component={FlightPathQuery} />
         </nav>
       </Router>
       </div>

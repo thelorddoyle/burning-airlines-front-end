@@ -21,16 +21,18 @@ class FlightResults extends Component {
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id)
-        console.log(this.props)
+        // console.log(this.props.match)
         
         this.showFlightInfo()
+        // TODO: This is basically where we need to stop ALL flights showing (if we want to do that) and organise it so that the search function actually queries the DB with the origin of the flight.
+        // TODO: 
         
     }
 
-    showFlightInfo = async (flightNo) => {
-        this.setState({ loading: true }); 
+    showFlightInfo = async () => {
+        this.setState({ loading: true });
         // this will pull from backend and push into this.state.flightInfo array
-
+        
         try {
             const res = await axios.get( RAILS_FLIGHTS_BASE_URL );
             // console.log('response', res.data);
@@ -47,7 +49,7 @@ class FlightResults extends Component {
     }
 
     goToFlight = (flight) => {
-        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
+        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight, this.state.flights) })
     }
 
     render() {
