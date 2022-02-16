@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import axios from 'axios'
 
-const RAILS_SECRETS_BASE_URL ='http://localhost:3000/flights'
+const RAILS_FLIGHTS_BASE_URL ='http://localhost:3000/flights'
 
 
 class FlightResults extends Component {
@@ -32,23 +32,19 @@ class FlightResults extends Component {
         // this will pull from backend and push into this.state.flightInfo array
 
         try {
-            const res = await axios.get( RAILS_SECRETS_BASE_URL );
+            const res = await axios.get( RAILS_FLIGHTS_BASE_URL );
             // console.log('response', res.data);
             this.setState({
               flights: res.data,
               loading: false  
             });
-            console.log('checking state:', this.state.flights);
+            // console.log('checking state:', this.state.flights);
           } catch( err ){
              console.log('Error in search AJAX: ', err);
              this.setState({ error: err, loading: false });
           }
-
+          
     }
-
-    // routeToFlightPage = () => {
-    //     this.props.history.push(`/flights/${this.state.selectedFlight.id}`)
-    // }
 
     goToFlight = (flight) => {
         this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
@@ -96,6 +92,3 @@ class FlightResults extends Component {
 }
 
 export default FlightResults;
-
-
-
