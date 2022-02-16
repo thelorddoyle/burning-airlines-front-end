@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.seat {
+  height: 40px;
+  width: 40px;
+  border: 1px white solid;
+}
+
+.grid {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.planeButton {
+  height: 35px;
+  width: 35px
+}
+
+.unavailableSeat {
+  cursor: not-allowed;
+  height: 35px;
+  width: 35px;
+  border: 1px white solid;
+  background-color: red;
+}

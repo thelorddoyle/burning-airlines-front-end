@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import axios from 'axios'
+import Seat from './Seat'
 
 // const RAILS_FLIGHTS_BASE_URL = 'localhost:3000/flights/'
 
@@ -52,23 +52,13 @@ class PageToBookFlight extends Component {
         let seatPlanArray = [];
 
         const { rows, columns, reservation } = this.state;
-        console.log(reservation)
         for (let i = 1; i < rows+1; i ++){
             // seatPlanArray.push(<div className='row' key={i}></div>);
             // console.log(seatPlanArray)
             for (let j = 1; j < columns+1; j++){
 
-                // reservation.forEach( (r) => {
+                seatPlanArray.push(<Seat row={i} column={j} plane={this.state.plane} flight={this.state.flight} reservation={this.state.reservation} />);
 
-                    // if (r.column === j && r.row === i){
-                //         seatPlanArray.push(<div status='occupied' row={i} column={j}></div>);
-                //         // console.log(seatPlanArray)
-                //     } else {
-                        seatPlanArray.push(<div status='unoccupied' row={i} column={j}></div>);
-                //         // console.log('column', j, 'row', i)
-                //     }
-
-                // })
             }
         }
 
@@ -83,7 +73,9 @@ class PageToBookFlight extends Component {
         return (
             <div>
                 THIS IS THE FLIGHTS PAGE {this.props.match.params.id}
-                {this.state.seatPlan}
+                <div className='grid'>
+                    {this.state.seatPlan}
+                </div>
             </div>
         );
     }
