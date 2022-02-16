@@ -4,11 +4,9 @@ import FlightsSearch from './FlightsSearch'
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
 import axios from 'axios'
 
 const RAILS_FLIGHTS_BASE_URL ='http://localhost:3000/flights'
-
 
 class FlightResults extends Component {
 
