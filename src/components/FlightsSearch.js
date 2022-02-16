@@ -5,12 +5,14 @@ class FlightsSearch extends React.Component {
 
     state = {
         flightSelect: [], // this should be an array which we're pushing flight info into.
+        originQuery: '',
         loading: true,
         error: false 
     }
 
     handleInput = (ev) => {
-        this.setState({ flightSelect: ev.target.value }); // sets state
+        this.setState({ originQuery: ev.target.value }); // sets state
+
     }
 
     handleSelection = (ev) => {
