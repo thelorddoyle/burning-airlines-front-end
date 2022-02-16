@@ -66,8 +66,6 @@ class PageToBookFlight extends Component {
 
     }
 
-    
-
     render() {
 
         return (
@@ -82,3 +80,4 @@ class PageToBookFlight extends Component {
 }
 
 export default PageToBookFlight;
+
