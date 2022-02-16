@@ -52,7 +52,6 @@ class FlightResults extends Component {
 
     goToFlight = (flight) => {
         this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
-         
     }
 
     render() {
@@ -66,7 +65,7 @@ class FlightResults extends Component {
         origin: {f.origin} <br />
         seats: {f.seats} <br />
             <form onSubmit={ () => {
-                this.goToFlight(f)
+                this.props.sendData(this.state.selectedFlight)
             } } >
         <Button type="submit">View Flight</Button>
             </form>
