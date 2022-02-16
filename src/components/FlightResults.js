@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import'../App.css'
 import FlightsSearch from './FlightsSearch'
+import { Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import axios from 'axios'
 
 const RAILS_SECRETS_BASE_URL ='http://localhost:3000/flights'
 
+
 class FlightResults extends Component {
 
     state = {
+        flights: [],
         flightInfo: [], // from backend. 
         loading: false,  
-        error: null 
+        error: null,
+        selectedFlight: []
     }
 
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id)
-        this.showFlightInfo() 
+        this.showFlightInfo()
         
     }
 
@@ -28,11 +33,12 @@ class FlightResults extends Component {
 
         try {
             const res = await axios.get( RAILS_SECRETS_BASE_URL );
-            console.log('response', res.data);
-            // this.setState({
-            //   flightInfo: res.dat
-            //   loading: false  
-            // });
+            // console.log('response', res.data);
+            this.setState({
+              flights: res.data,
+              loading: false  
+            });
+            console.log('checking state:', this.state.flights);
           } catch( err ){
              console.log('Error in search AJAX: ', err);
              this.setState({ error: err, loading: false });
@@ -40,29 +46,51 @@ class FlightResults extends Component {
 
     }
 
+    // routeToFlightPage = () => {
+    //     this.props.history.push(`/flights/${this.state.selectedFlight.id}`)
+    // }
+
+    goToFlight = (flight) => {
+        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
+         
+    }
 
     render() {
+
+        const { loading, error, flights} = this.state;
+
+        const flightList = flights.map((f) => 
+        <li key={f.id}>
+        airplane_id: {f.id} <br />
+        destination: {f.destination} <br />
+        origin: {f.origin} <br />
+        seats: {f.seats} <br />
+            <form onSubmit={ () => {
+                this.goToFlight(f)
+            } } >
+        <Button type="submit">View Flight</Button>
+            </form>
+        <br /><br />
+        </li>)
+
         if( this.state.error !== null ){
             return <p>Sorry, there was an error loading your flight information. Please try again.</p>;
           }
         return (
             <div>
+            <ul>
                 {
                 this.state.loading
                 ?
                 <p>Loading results...</p>
                 :
                 <div className="bookFlight">
-                    <p>showing results for selected flight ({this.props.match.params.id})</p>
-                    <p>from: something like this.flightInfo.origin </p>
-                    <p>to: something like this.flightInfo.destination</p>
-                    <p>plane: something like this.flightInfo.plane.name, (this.flightInfo.plane.id)?</p>
-                    <p>depart time/date: ?</p>
-                    <p>seat select: this will set params for our reservation which will be passed back to the backend</p>
-                    <p>on submit, prompt('something about confirming selection'): </p>
-                    <p>Redirect home?</p>
+                    
+                {flightList}
+            
                 </div>
                 }
+            </ul>
             </div>
         );
     }

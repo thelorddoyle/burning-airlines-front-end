@@ -1,9 +1,12 @@
 import React from 'react';
+import FlightResults from './FlightResults'
 
 class FlightsSearch extends React.Component {
 
     state = {
-        flightSelect: '', // this should be an array which we're pushing flight info into. 
+        flightSelect: [], // this should be an array which we're pushing flight info into.
+        loading: true,
+        error: false 
     }
 
     handleInput = (ev) => {
@@ -11,13 +14,23 @@ class FlightsSearch extends React.Component {
     }
 
     handleSelection = (ev) => {
-        this.props.history.push(`/flights/${(this.state.flightSelect)}`) // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
+        console.log(ev)
+        this.props.history.push(`/flights/${(ev)}`) 
+        // ev here is the ID sent from getData handleSelection call
+        
+        // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
+    }
+
+    getData = (ev) => {
+        // console.log('got: ', ev)
+        this.setState({flightSelect: ev}, () => {this.handleSelection(this.state.flightSelect.id)})
     }
 
     render() {
         return (
             <div>
                 <h1>Flights</h1>
+
                 <div className="flights">
                     <p>Info about flights goes here:</p>
                     imagine this is a flight select area. just testing prop passing
@@ -27,7 +40,10 @@ class FlightsSearch extends React.Component {
                     existing planned flight. we could probably just send this to flight 
                     search and not have to query the db there. */}
                     </form>
+                    <br />
+                    <FlightResults sendData={this.getData} />
                 </div>
+
             </div>
         );
     }
