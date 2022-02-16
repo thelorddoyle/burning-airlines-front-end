@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import'../App.css'
 import FlightsSearch from './FlightsSearch'
+import { Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import axios from 'axios'
@@ -14,13 +16,14 @@ class FlightResults extends Component {
         flights: [],
         flightInfo: [], // from backend. 
         loading: false,  
-        error: null 
+        error: null,
+        selectedFlight: []
     }
 
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id)
-        this.showFlightInfo() 
+        this.showFlightInfo()
         
     }
 
@@ -43,16 +46,14 @@ class FlightResults extends Component {
 
     }
 
-    // flightIndex = (f) =>{
-    //     f.forEach(flight => {
-    //         render(){
-    //             // <p>{flight.id}</p>
-    //         }
-    //         console.log('hello');
-            
-            
-    //     });
+    // routeToFlightPage = () => {
+    //     this.props.history.push(`/flights/${this.state.selectedFlight.id}`)
     // }
+
+    goToFlight = (flight) => {
+        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
+         
+    }
 
     render() {
 
@@ -60,10 +61,16 @@ class FlightResults extends Component {
 
         const flightList = flights.map((f) => 
         <li key={f.id}>
-        airplane_id: {f.id}
-        destination: {f.destination}
-        origin: {f.origin}
-        seats: {f.seats}
+        airplane_id: {f.id} <br />
+        destination: {f.destination} <br />
+        origin: {f.origin} <br />
+        seats: {f.seats} <br />
+            <form onSubmit={ () => {
+                this.goToFlight(f)
+            } } >
+        <Button type="submit">View Flight</Button>
+            </form>
+        <br /><br />
         </li>)
 
         if( this.state.error !== null ){
