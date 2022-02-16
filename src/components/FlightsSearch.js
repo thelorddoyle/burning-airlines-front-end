@@ -15,6 +15,12 @@ class FlightsSearch extends React.Component {
 
     }
 
+    handleSearch = (ev) => {
+        ev.preventDefault()
+        console.log('search handled:', this.state.originQuery)
+        this.props.history.push(`/flights/search/path`)
+    }
+
     handleSelection = (ev) => {
         console.log(ev)
         this.props.history.push(`/flights/${(ev.id)}`) 
@@ -23,8 +29,9 @@ class FlightsSearch extends React.Component {
         // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
     }
 
-    getData = (ev) => {
+    getData = (ev, allFlights) => {
         console.log('got: ', ev)
+        // console.log(allFlights)
         this.setState({flightSelect: ev}, () => {this.handleSelection(this.state.flightSelect)})
     }
 
@@ -36,7 +43,7 @@ class FlightsSearch extends React.Component {
                 <div className="flights">
                     <p>Info about flights goes here:</p>
                     imagine this is a flight select area. just testing prop passing
-                    <form onSubmit={ this.handleSelection }>
+                    <form onSubmit={ this.handleSearch }>
                     <input type="text" onChange={ this.handleInput } /> 
                     {/* maybe the flight info goes here since we're clicking on an 
                     existing planned flight. we could probably just send this to flight 

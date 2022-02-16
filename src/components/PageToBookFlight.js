@@ -21,6 +21,7 @@ class PageToBookFlight extends Component {
         // this.showFlightInfo()
         console.log('mounted')
         this.getReservationInfo(this.props.match.params.id)
+        console.log(this.props.match.originQuery)
     }
     
     getReservationInfo = async (ev) => {

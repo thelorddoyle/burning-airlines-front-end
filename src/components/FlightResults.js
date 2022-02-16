@@ -21,7 +21,7 @@ class FlightResults extends Component {
     componentDidMount(){ 
         // this will call showFlightInfo() with: 
         // this.showFlightInfo(this.props.match.params.id)
-        console.log(this.props)
+        // console.log(this.props.match)
         
         this.showFlightInfo()
         
@@ -47,7 +47,7 @@ class FlightResults extends Component {
     }
 
     goToFlight = (flight) => {
-        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight) })
+        this.setState({selectedFlight: flight}, () => { this.props.sendData(this.state.selectedFlight, this.state.flights) })
     }
 
     render() {
