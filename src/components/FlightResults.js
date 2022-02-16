@@ -69,6 +69,3 @@ class FlightResults extends Component {
 }
 
 export default FlightResults;
-
-
-
