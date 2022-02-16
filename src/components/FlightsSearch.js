@@ -15,15 +15,15 @@ class FlightsSearch extends React.Component {
 
     handleSelection = (ev) => {
         console.log(ev)
-        this.props.history.push(`/flights/${(ev)}`) 
+        this.props.history.push(`/flights/${(ev.id)}`) 
         // ev here is the ID sent from getData handleSelection call
         
         // adds to history (url) <-- shuold be this.state.flightSelect.something to get to the flight id.
     }
 
     getData = (ev) => {
-        // console.log('got: ', ev)
-        this.setState({flightSelect: ev}, () => {this.handleSelection(this.state.flightSelect.id)})
+        console.log('got: ', ev)
+        this.setState({flightSelect: ev}, () => {this.handleSelection(this.state.flightSelect)})
     }
 
     render() {

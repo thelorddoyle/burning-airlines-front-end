@@ -3,6 +3,7 @@ import '../App.css';
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import FlightsSearch from './FlightsSearch'
 import FlightResults from './FlightResults'
+import PageToBookFlight from './PageToBookFlight';
 
 class NavBar extends React.Component{
 
@@ -19,7 +20,7 @@ class NavBar extends React.Component{
         <h3>GA Airlines</h3>
 
         <Route exact path = '/flights' component={ FlightsSearch } />
-        <Route exact path = '/flights/:id' component={FlightResults} />
+        <Route exact path = '/flights/:id' component={PageToBookFlight} />
         </nav>
       </Router>
       </div>
