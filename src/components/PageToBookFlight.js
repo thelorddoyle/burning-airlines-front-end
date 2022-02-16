@@ -66,8 +66,6 @@ class PageToBookFlight extends Component {
 
     }
 
-    
-
     render() {
 
         return (
