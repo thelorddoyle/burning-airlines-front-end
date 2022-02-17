@@ -137,3 +137,7 @@
   border: 1px white solid;
   background-color: red;
 }
+.homepage{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr)
+}

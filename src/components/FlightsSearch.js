@@ -6,19 +6,22 @@ class FlightsSearch extends React.Component {
     state = {
         flightSelect: [], // this should be an array which we're pushing flight info into.
         originQuery: '',
+        destinationQuery: '',
         loading: true,
         error: false 
     }
 
     handleInput = (ev) => {
         this.setState({ originQuery: ev.target.value }); // sets state
-
+    }
+    secondInput = (ev) => {
+        this.setState({destinationQuery: ev.target.value})
     }
 
     handleSearch = (ev) => {
         ev.preventDefault()
         console.log('search handled:', this.state.originQuery)
-        this.props.history.push(`/flights/search/${this.state.originQuery}`)
+        this.props.history.push(`/flights/search/${this.state.originQuery}/${this.state.destinationQuery}`)
     }
 
     handleSelection = (ev) => {
@@ -48,6 +51,8 @@ class FlightsSearch extends React.Component {
                     imagine this is a flight select area. just testing prop passing
                     <form onSubmit={ this.handleSearch }>
                     <input type="text" onChange={ this.handleInput } /> 
+                    <input type="text" onChange={ this.secondInput } /> 
+                    <button type="submit">SEARCH</button>
                     {/* maybe the flight info goes here since we're clicking on an 
                     existing planned flight. we could probably just send this to flight 
                     search and not have to query the db there. */}
