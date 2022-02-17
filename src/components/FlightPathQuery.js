@@ -11,7 +11,7 @@ class FlightPathQuery extends Component {
     state = {
         flights: [],
         flightInfo: [], // from backend. 
-        loading: true,  
+        loading: false,  
         error: null,
         selectedFlight: []
     }
@@ -51,37 +51,42 @@ class FlightPathQuery extends Component {
         const allFlights = flights.origin
         console.log('PLEASE LOOK HERE AGAIN', allFlights)
 
-        const flightList = allFlights.map((f) => 
-        console.log(f))
+        const flightList = allFlights?.map((f) => 
+        // console.log('fffff',f))
 
-        // <li key={f.id}>
-        // airplane_id: {f.id} <br />
-        // destination: {f.destination} <br />
-        // origin: {f.origin} <br />
-        // seats: {f.seats} <br />
-        //     <form onSubmit={ () => {
-        //         this.goToFlight(f)
-        //     } } >
-        // <Button type="submit">View Flight</Button>
-        //     </form>
-        // <br /><br />
-        // </li>)
+        <li key={f.id}>
+        airplane_id: {f.id} <br />
+        destination: {f.destination} <br />
+        origin: {f.origin} <br />
+        seats: {f.seats} <br />
+            <form onSubmit={ () => {
+                this.goToFlight(f)
+            } } >
+        <Button type="submit">View Flight</Button>
+            </form>
+        <br /><br />
+        </li>)
 
-        // if( this.state.error !== null ){
-        //     return <p>Sorry, there was an error loading your flight information. Please try again.</p>;
-        //   }
+        if( this.state.error !== null ){
+            return <p>Sorry, there was an error loading your flight information. Please try again.</p>;
+          }
 
         return (
             <div>
-                {/* <FlightsSearch /> */}
-                {/* {flightList} */}
-                {this.state.loading
+            <h1>All Flights</h1>
+            <ul>
+                {
+                this.state.loading
                 ?
-                <p>loading...</p>
+                <p>Loading results...</p>
                 :
+                <div className="bookFlight">
+                    
                 {flightList}
+            
+                </div>
                 }
-
+            </ul>
             </div>
         );
     }
