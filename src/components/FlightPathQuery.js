@@ -1,11 +1,87 @@
 import React, { Component } from 'react';
 import FlightsSearch from './FlightsSearch';
+import axios from 'axios'
+import { Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+const RAILS_FLIGHTS_BASE_URL ='http://localhost:3000/'
 
 class FlightPathQuery extends Component {
+
+    state = {
+        flights: [],
+        flightInfo: [], // from backend. 
+        loading: true,  
+        error: null,
+        selectedFlight: []
+    }
+
+    componentDidMount(){ 
+    
+        console.log('WE HAVE MOUNTED THE ORIGIN', this.props.match.params.origin);
+        this.getFlightsFromOrigin(this.props.match.params.origin)
+    
+    }
+
+    getFlightsFromOrigin = async (ev) => {
+        this.setState({ loading: true });
+        // this will pull from backend and push into this.state.flightInfo array
+        
+        try {
+            const res = await axios.get(`http://localhost:3000/flights/search/${ev}` );
+            console.log('response', res.data);
+            this.setState({
+              flights: res.data,
+              loading: false  
+            });
+            console.log('THIS SHOULD BE checking state:', this.state.flights.origin);
+
+          } catch( err ){
+             console.log('Error in search AJAX: ', err);
+             this.setState({ error: err, loading: false });
+          }
+          
+    }
+
+
     render() {
+
+        const { loading, error, flights} = this.state;
+        console.log('LOOK HERE', flights)
+        const allFlights = flights.origin
+        console.log('PLEASE LOOK HERE AGAIN', allFlights)
+
+        const flightList = allFlights.map((f) => 
+        console.log(f))
+
+        // <li key={f.id}>
+        // airplane_id: {f.id} <br />
+        // destination: {f.destination} <br />
+        // origin: {f.origin} <br />
+        // seats: {f.seats} <br />
+        //     <form onSubmit={ () => {
+        //         this.goToFlight(f)
+        //     } } >
+        // <Button type="submit">View Flight</Button>
+        //     </form>
+        // <br /><br />
+        // </li>)
+
+        // if( this.state.error !== null ){
+        //     return <p>Sorry, there was an error loading your flight information. Please try again.</p>;
+        //   }
+
         return (
             <div>
-                <FlightsSearch />
+                {/* <FlightsSearch /> */}
+                {/* {flightList} */}
+                {this.state.loading
+                ?
+                <p>loading...</p>
+                :
+                {flightList}
+                }
+
             </div>
         );
     }

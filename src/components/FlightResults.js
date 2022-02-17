@@ -75,6 +75,7 @@ class FlightResults extends Component {
           }
         return (
             <div>
+            <h1>All Flights</h1>
             <ul>
                 {
                 this.state.loading

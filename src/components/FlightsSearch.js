@@ -18,7 +18,7 @@ class FlightsSearch extends React.Component {
     handleSearch = (ev) => {
         ev.preventDefault()
         console.log('search handled:', this.state.originQuery)
-        this.props.history.push(`/flights/search/path`)
+        this.props.history.push(`/flights/search/${this.state.originQuery}`)
     }
 
     handleSelection = (ev) => {

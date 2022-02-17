@@ -22,7 +22,7 @@ class NavBar extends React.Component{
 
         <Route exact path = '/flights' component={ FlightsSearch } />
         <Route exact path = '/flights/:id' component={PageToBookFlight} />
-        <Route exact path = '/flights/search/path' component={FlightPathQuery} />
+        <Route exact path = '/flights/search/:origin' component={FlightPathQuery} />
         </nav>
       </Router>
       </div>
