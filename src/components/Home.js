@@ -12,7 +12,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>HOME PAGE</h1>
+                <h1>My Account</h1>
                 <div className="homepage">
 
                     <div className="all-flights">

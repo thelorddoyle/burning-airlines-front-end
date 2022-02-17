@@ -62,6 +62,7 @@ class FlightResults extends Component {
         destination: {f.destination} <br />
         origin: {f.origin} <br />
         seats: {f.seats} <br />
+        date: {f.date} <br/>
             <form onSubmit={ () => {
                 this.goToFlight(f)
             } } >
