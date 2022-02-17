@@ -43,6 +43,11 @@ class FlightPathQuery extends Component {
           
     }
 
+    handleSelection = (ev) => {
+        console.log(ev)
+        this.props.history.push(`/flights/${(ev)}`) 
+    }
+
 
     render() {
 
