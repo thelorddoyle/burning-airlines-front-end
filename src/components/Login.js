@@ -18,6 +18,9 @@ class Login extends Component {
   render() {
     return (
       <div>
+        <div className="spacer"></div>
+        <h1>LOGIN</h1>
+
         <form onSubmit={this.handleSubmit}>
           <input placeholder='USER ID' type="text" onChange={this.handleInput} />
           <button>Login</button>

@@ -32,6 +32,9 @@ class Seat extends React.Component {
       // console.log('this seat is on row ' + this.props.row + ' and column ' + this.props.column)
       // console.log('submit: ', this.state.secretContent)
       this.postReservation( this.state.row, this.state.column, this.state.flight_id );
+      // console.log(this.props.flight.id)
+      this.pageForceUpdate()
+      // this.props.history.push(`/flights/${this.props.flight.id}`)
     }
 
     postReservation = async (row, column, flight_id) => {

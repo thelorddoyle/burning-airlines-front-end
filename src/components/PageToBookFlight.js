@@ -61,7 +61,7 @@ class PageToBookFlight extends Component {
             // console.log(seatPlanArray)
             for (let j = 1; j < columns+1; j++){
 
-                seatPlanArray.push(<Seat key={`seat ${i-1}${j}`} row={i} column={j} plane={this.state.plane} flight={this.state.flight} reservation={this.state.reservation} />);
+                seatPlanArray.push(<Seat pageForceUpdate={this.pageForceUpdate} key={`seat ${i-1}${j}`} row={i} column={j} plane={this.state.plane} flight={this.state.flight} reservation={this.state.reservation} />);
 
             }
         }
@@ -112,12 +112,18 @@ class PageToBookFlight extends Component {
 
     }
 
+    pageForceUpdate = () =>{
+        this.render()
+        console.log("HELLO")
+    }
+
     render() {
 
         return (
             <div>
                 THIS IS THE FLIGHTS PAGE {this.props.match.params.id}
                 {this.state.seatPlanGrid}
+                <button onClick={this.pageForceUpdate}>SUBMIT</button>
             </div>
         );
     }
